@@ -1,0 +1,27 @@
+name: Build and release business card
+
+on:
+  push:
+    tags:
+      - "*"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Compile LaTeX
+        uses: xu-cheng/latex-action@v4
+        with:
+          root_file: card.tex
+
+      - name: Release PDF
+        uses: softprops/action-gh-release@v2
+        with:
+          files: card.pdf
