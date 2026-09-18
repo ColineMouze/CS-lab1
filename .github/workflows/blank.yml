@@ -3,7 +3,7 @@ name: Build and release business card
 on:
   push:
     tags:
-      - "*v"
+      - "*"
 
 jobs:
   build_latex:
